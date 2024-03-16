@@ -19,7 +19,7 @@ class Game {
       genre: json['genre'],
       developers: json['developers'],
       publishers: json['publishers'],
-      releaseDates: json['release_dates'],
+      releaseDates: json['releaseDates'],
     );
   }
 }

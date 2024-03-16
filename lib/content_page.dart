@@ -30,6 +30,49 @@ class _ContentPageState extends State<ContentPage> {
     _getGameInfo();
   }
 
+  void showData(choosed_game) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(20.0),
+            ),
+          ),
+          contentPadding: EdgeInsets.only(
+            top: 10.0,
+          ),
+          title: Text(
+            '${choosed_game.name}',
+            style: TextStyle(fontSize: 24.0),
+          ),
+          content: Container(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('     Name : ${choosed_game.name}'),
+                Text('     Genre : ' + choosed_game.genre.toString()),
+                Text('     Developers : ' + choosed_game.developers.toString()),
+                Text('     Publishers : ' + choosed_game.publishers.toString()),
+                Text('     Release Dates: '),
+                Text('        Japan: ' +
+                    choosed_game.releaseDates["Japan"].toString()),
+                Text('        NorthAmerica: ' +
+                    choosed_game.releaseDates["NorthAmerica"].toString()),
+                Text('        Europe: ' +
+                    choosed_game.releaseDates["Europe"].toString()),
+                Text('        Australia: ' +
+                    choosed_game.releaseDates["Australia"].toString()),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -46,6 +89,7 @@ class _ContentPageState extends State<ContentPage> {
                       subtitle: Text('Creator : ' + game.developers.toString()),
                       onTap: () {
                         print('${game.name}');
+                        showData(game);
                       },
                     );
                   },
